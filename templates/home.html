@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender System</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<style>
+    a:link {
+      color: green;
+    }
+
+    /* visited link */
+    a:visited {
+      color: green;
+    }
+
+    /* mouse over link */
+    a:hover {
+      color: blue;
+    }
+
+    /* selected link */
+    a:active {
+      color: yellow;
+    }
+    .text-green{
+        color:#00a65a
+    }
+    .text-yellow{
+        color:yellow
+    }
+    .text-white{
+        color:white
+    }
+    body {
+            background-image: url("{{ url_for('static', filename='abc.jpg') }}");
+            background-size: cover;
+    }
+    .right-image {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 400px;
+        height: 350px;
+    }
+</style>
+<body>
+
+    <nav class="navbar" style="background-color:#00a65a">
+        <ul class="nav navbar-nav">
+            <li><a class="navbar-brand"><h1 class="text-yellow" style="font-size:20px">My Book Recommender</h1></a></li>
+            <li><a href="/"><h1 class="text-yellow" style="font-size:20px">Home</h1></a></li>
+            <li><a href="/recommend"><h1 class="text-yellow" style="font-size:20px">Recommend</h1></a></li>
+            <li><a href="/contact"><h1 class="text-yellow" style="font-size:20px">Contact Us</h1></a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <img src="{{ url_for('static', filename='lmn.jpg') }}" class="right-image">
+                <h1 class="text-green" style="font-size:50px"><b>Why use our website?</b></h1>
+            </div>
+                <div class="col-md-8" style="margin-top:40px">
+                    <p><h4 class="text-white" style="font-size:20px">Welcome to our Book Recommendation System website, your ultimate destination for finding your next favorite book.<br><br> Our website is designed to simplify your search and provide personalized recommendations based on your reading preferences.<br><br> So, sit back, relax, and let our Book Recommendation System guide you to your next literary adventure.</h4></p>
+                    </div>
+
+            <div class="col-md-12" style="margin-top:50px">
+
+                <p><h1 class="text-green" style="font-size:30px"><b>Top 5 Books</b></h1></p>
+                    {% for i in range(book_name|length) %}
+                <div class="col-md-3" style="margin-top:50px">
+                    <div class="card">
+                        <div class="card-body">
+                            <img class="card-img-top" src="{{ image[i] }}">
+                            <p class="text-white">{{ book_name[i] }}</p>
+                            <h4 class="text-white">{{ author[i] }}</h4>
+                            <h4 class="text-white">Votes - {{ votes[i] }}</h4>
+                            <h4 class="text-white">Rating - {{ rating[i] }}</h4>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+             <div class="col-md-12" style="margin-top:10px">
+
+                 <a href="/top50"><h1 class="text-white" style="font-size:20px">Click here to see more!</h1></a>             </div>
+            <div class="col-md-12" style="margin-top:50px">
+                 <br>
+                <h1 class="text-white" style="font-size:30px"><b>Here are some other links thats suggests popular books:</b></h1><br>
+                        <a href="https://www.amazon.com/Best-Sellers-Books/zgbs/books/"><h1 class="text-white" style="font-size:20px">1. Amazon Best Sellers</h1></a><br>
+                        <a href="https://www.goodreads.com/choiceawards/best-books-2021"><h1 class="text-white" style="font-size:20px">2. Goodreads Choice Awards</h1></a><br>
+                        <a href="https://www.barnesandnoble.com/b/books/_/N-1fZ29Z8q8"><h1 class="text-white" style="font-size:20px">3. Barnes & Noble Bestsellers</h1></a><br>
+                        <a href="https://www.nytimes.com/books/best-sellers/"><h1 class="text-white" style="font-size:20px">4. New York Times Best Sellers </h1></a><br>
+
+                    </p>
+            </div>
+                    </div>
+                </div>
+
+
+        </div>
+    </div>
+
+</body>
+</html>
